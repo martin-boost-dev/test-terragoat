@@ -1,3 +1,4 @@
+name: SAST (Dev)
 on:
   workflow_dispatch:
   push:
@@ -18,13 +19,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: BoostSecurity Scanner
-        uses: peaudecastor/boost-security-scanner-github@v2
-        env:
-          BOOST_CLI_URL: https://assets.build.boostsecurity.io
+        uses: boostsecurityio/boostsec-scanner-github@v3
         with:
           action: scan
           api_endpoint: https://api.dev.boostsec.io
           api_token: ${{ secrets.BOOST_API_KEY_DEV }}
           additional_args: --disable-telemetry --api-version v2
-          cli_version: 3.0.0.rc483
-          scanner_version: 3.0.0.rc483
