@@ -139,7 +139,7 @@ resource aws_eks_cluster "eks_cluster" {
   }
 }
 
-resource aws_eks_cluster "eks_cluster2" {  # noboost
+resource aws_eks_cluster "eks_cluster2" {
   name     = local.eks_name.value
   role_arn = "${aws_iam_role.iam_for_eks.arn}"
 
