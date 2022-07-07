@@ -23,3 +23,4 @@ jobs:
           action: scan
           api_endpoint: https://api.dev.boostsec.io
           api_token: ${{ secrets.BOOST_API_KEY_DEV }}
+          additional_args: --diff-scan-timeout 2
