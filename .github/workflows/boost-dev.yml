@@ -23,3 +23,17 @@ jobs:
           action: scan
           api_endpoint: https://api.dev.boostsec.io
           api_token: ${{ secrets.BOOST_API_KEY_DEV }}
+
+  native_scanner2:
+    name: Boost Security / Native Scanner 2
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Native Scanner 2
+        uses: boostsecurityio/boostsec-scanner-github@v3
+        with:
+          action: scan
+          api_endpoint: https://api.dev.boostsec.io
+          api_token: ${{ secrets.BOOST_API_KEY_DEV }}
+          additional_args: --name boost-duplicate
