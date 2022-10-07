@@ -1,3 +1,4 @@
+name: boostsecurity.io
 on:
   workflow_dispatch:
   push:
@@ -9,17 +10,29 @@ on:
     types:
       - opened
       - synchronize
-
 jobs:
-  native_scanner:
-    name: Boost Security / Native Scanner
+  boost-sast:
+    name: SAST
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
-      - name: Native Scanner
-        uses: boostsecurityio/boostsec-scanner-github@v3
+        uses: actions/checkout@v3
+      - name: Run Native Scanner
+        uses: boostsecurityio/boostsec-scanner-github@v4
         with:
-          action: scan
           api_endpoint: https://api.dev.boostsec.io
           api_token: ${{ secrets.BOOST_API_KEY_DEV }}
+          registry_module: boostsecurityio/native-scanner
+  boost-sbom:
+    name: SBOM
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Upload SBOM from Trivy
+        uses: boostsecurityio/boostsec-scanner-github@v4
+        with:
+          api_endpoint: https://api.dev.boostsec.io
+          api_token: ${{ secrets.BOOST_API_KEY_DEV }}
+          registry_module: boostsecurityio/trivy-sbom
