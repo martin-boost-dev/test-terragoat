@@ -1,5 +1,6 @@
 # TerraGoat - Vulnerable Terraform Infrastructure
-wat
+
+![boostsecurity](https://api.dev.boostsec.io/badges/ypt4AVq7AOvh_L6H/martin-boost-dev/test-terragoat)
 wat
 wat
 [![Maintained by Bridgecrew.io](https://img.shields.io/badge/maintained%20by-bridgecrew.io-blueviolet)](https://bridgecrew.io/?utm_source=github&utm_medium=organic_oss&utm_campaign=terragoat)
