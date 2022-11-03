@@ -58,7 +58,7 @@ resource aws_vpc "eks_vpc" {
   })
 }
 
-resource aws_subnet "eks_subnet1" {
+resource aws_subnet "eks_subnet1" {  # noboost
   vpc_id                  = aws_vpc.eks_vpc.id
   cidr_block              = "10.10.10.0/24"
   availability_zone       = "${var.region}a"
