@@ -102,5 +102,6 @@ jobs:
         env:
           BOOST_IMAGE_NAME: my-test-terragoat
         with:
+          api_endpoint: https://api.dev.boostsec.io
           registry_module: boostsecurityio/trivy-sbom-image
           api_token: ${{ secrets.BOOST_API_KEY_DEV }}
