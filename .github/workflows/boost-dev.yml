@@ -103,4 +103,4 @@ jobs:
           BOOST_IMAGE_NAME: my-test-terragoat
         with:
           registry_module: boostsecurityio/trivy-sbom-image
-          api_token: ${{ secrets.BOOST_API_TOKEN }}
+          api_token: ${{ secrets.BOOST_API_KEY_DEV }}
