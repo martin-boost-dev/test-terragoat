@@ -1,0 +1,41 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+stages:
+  - stage: Ouane
+    jobs:
+      - job:
+        steps:
+          - script: |
+              echo Hello, world!
+              env
+            displayName: 'Run a one-line script'
+  - stage: Run_Security_Scanners
+    variables:
+      - group: boostsecurity
+      - name: boostApiToken
+        value: $[variables.BOOST_API_TOKEN]
+      - name: isMainBranch
+        value: $[eq(variables['Build.SourceBranch'], 'refs/heads/main')]
+    jobs:
+      - job:
+        steps:
+          - task: BoostSecurityScan@1
+            inputs:
+              apiToken: $(boostApiToken)
+              apiEndpoint: https://api.dev.boostsec.io
+              registryModule: boostsecurityio/native-scanner
+          - task: BoostSecurityScan@1
+            condition: eq(variables.isMainBranch, 'true')
+            inputs:
+              apiToken: $(boostApiToken)
+              apiEndpoint: https://api.dev.boostsec.io
+              registryModule: boostsecurityio/trivy-sbom
