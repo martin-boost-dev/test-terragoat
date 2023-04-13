@@ -34,6 +34,7 @@ stages:
               apiEndpoint: https://api.dev.boostsec.io
               scannerId: scanner-native-from-azure
               registryModule: boostsecurityio/native-scanner
+              logLevel: trace
               cliVersion: "1.0.0.rc142"
           - task: BoostSecurityScan@1
             condition: eq(variables.isMainBranch, 'true')
@@ -42,4 +43,5 @@ stages:
               apiEndpoint: https://api.dev.boostsec.io
               scannerId: scanner-sbom-from-azure
               registryModule: boostsecurityio/trivy-sbom
+              logLevel: trace
               cliVersion: "1.0.0.rc142"
