@@ -32,10 +32,14 @@ stages:
             inputs:
               apiToken: $(boostApiToken)
               apiEndpoint: https://api.dev.boostsec.io
+              scannerId: scanner-native-from-azure
               registryModule: boostsecurityio/native-scanner
+              cliVersion: "1.0.0.rc142"
           - task: BoostSecurityScan@1
             condition: eq(variables.isMainBranch, 'true')
             inputs:
               apiToken: $(boostApiToken)
               apiEndpoint: https://api.dev.boostsec.io
+              scannerId: scanner-sbom-from-azure
               registryModule: boostsecurityio/trivy-sbom
+              cliVersion: "1.0.0.rc142"
