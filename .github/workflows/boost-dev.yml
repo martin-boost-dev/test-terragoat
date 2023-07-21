@@ -23,59 +23,61 @@ jobs:
           api_endpoint: https://api.dev.boostsec.io
           api_token: ${{ secrets.BOOST_API_KEY_DEV }}
           registry_module: boostsecurityio/native-scanner
-          scanner_id: scanner-1
-  boost-sast-2:
-    name: SAST
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Run Native Scanner
-        uses: boostsecurityio/boostsec-scanner-github@v4
-        with:
-          api_endpoint: https://api.dev.boostsec.io
-          api_token: ${{ secrets.BOOST_API_KEY_DEV }}
-          registry_module: boostsecurityio/native-scanner
-          scanner_id: scanner-2
-  boost-sast-3:
-    name: SAST
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Run Native Scanner
-        uses: boostsecurityio/boostsec-scanner-github@v4
-        with:
-          api_endpoint: https://api.dev.boostsec.io
-          api_token: ${{ secrets.BOOST_API_KEY_DEV }}
-          registry_module: boostsecurityio/native-scanner
-          scanner_id: scanner-3
-  boost-sast-4:
-    name: SAST
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Run Native Scanner
-        uses: boostsecurityio/boostsec-scanner-github@v4
-        with:
-          api_endpoint: https://api.dev.boostsec.io
-          api_token: ${{ secrets.BOOST_API_KEY_DEV }}
-          registry_module: boostsecurityio/native-scanner
-          scanner_id: scanner-4
-  boost-sast-5:
-    name: SAST
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Run Native Scanner
-        uses: boostsecurityio/boostsec-scanner-github@v4
-        with:
-          api_endpoint: https://api.dev.boostsec.io
-          api_token: ${{ secrets.BOOST_API_KEY_DEV }}
-          registry_module: boostsecurityio/native-scanner
-          scanner_id: scanner-5
+          cli_version: 1.0.0.rc157
+          additional_args: --registry https://github.com/boostsecurityio/dev-registry.git#BST-6119-scanner-types
+#          scanner_id: scanner-1
+#  boost-sast-2:
+#    name: SAST
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Checkout
+#        uses: actions/checkout@v3
+#      - name: Run Native Scanner
+#        uses: boostsecurityio/boostsec-scanner-github@v4
+#        with:
+#          api_endpoint: https://api.dev.boostsec.io
+#          api_token: ${{ secrets.BOOST_API_KEY_DEV }}
+#          registry_module: boostsecurityio/native-scanner
+#          scanner_id: scanner-2
+#  boost-sast-3:
+#    name: SAST
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Checkout
+#        uses: actions/checkout@v3
+#      - name: Run Native Scanner
+#        uses: boostsecurityio/boostsec-scanner-github@v4
+#        with:
+#          api_endpoint: https://api.dev.boostsec.io
+#          api_token: ${{ secrets.BOOST_API_KEY_DEV }}
+#          registry_module: boostsecurityio/native-scanner
+#          scanner_id: scanner-3
+#  boost-sast-4:
+#    name: SAST
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Checkout
+#        uses: actions/checkout@v3
+#      - name: Run Native Scanner
+#        uses: boostsecurityio/boostsec-scanner-github@v4
+#        with:
+#          api_endpoint: https://api.dev.boostsec.io
+#          api_token: ${{ secrets.BOOST_API_KEY_DEV }}
+#          registry_module: boostsecurityio/native-scanner
+#          scanner_id: scanner-4
+#  boost-sast-5:
+#    name: SAST
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Checkout
+#        uses: actions/checkout@v3
+#      - name: Run Native Scanner
+#        uses: boostsecurityio/boostsec-scanner-github@v4
+#        with:
+#          api_endpoint: https://api.dev.boostsec.io
+#          api_token: ${{ secrets.BOOST_API_KEY_DEV }}
+#          registry_module: boostsecurityio/native-scanner
+#          scanner_id: scanner-5
 #  boost-sbom:
 #    name: SBOM
 #    if: github.event_name != 'pull_request'
